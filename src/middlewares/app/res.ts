@@ -1,5 +1,6 @@
-import { Response } from "express";
+import { Response, Request } from "express";
 import chalk from "chalk";
+import { UserDocument } from "../../modules/users";
 
 declare global {
   namespace Express {
@@ -27,6 +28,9 @@ declare global {
       error: (message: string, data: unknown, statusCode?: string) => unknown;
       unauthorizedUser: (message: string) => unknown;
       pageNotFound: () => unknown;
+    }
+    export interface Request {
+      user: UserDocument;
     }
   }
 }
